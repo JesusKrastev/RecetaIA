@@ -250,10 +250,6 @@ data class ColorFamily(
     val onColorContainer: Color
 )
 
-val unspecified_scheme = ColorFamily(
-    Color.Unspecified, Color.Unspecified, Color.Unspecified, Color.Unspecified
-)
-
 @Composable
 fun RecetaIATheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -263,7 +259,7 @@ fun RecetaIATheme(
   val colorScheme = when {
       dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
           val context = LocalContext.current
-          if (darkTheme) darkColorScheme() else lightColorScheme()
+          if (darkTheme) lightScheme else darkScheme
       }
       
       darkTheme -> darkScheme
